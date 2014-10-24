@@ -33,17 +33,7 @@ This will create a node_modules folder within wamp/www where Gulp and plug-in co
     $ npm install gulp-uglify --save-dev
     $ npm install gulp-browserify --save-dev (If you do not want to use requirejs, browserify is a good alternative for bundling up all of your dependencies.)
 
-4. Create an empty gulpfile.js configuration file within the project folder. e.g. wamp/www/projectA/. This is used to define our tasks. (This step is done by default already)
-
-5. Move all your CSS files (accept tinymce.css) into source/ (do the same for images). Then run this keyword only in your Command Prompt $ gulp, to optimise them. 
-
-6. Add the new CSS path in your HTML head to <link rel="stylesheet" media="screen" type="text/css" href="<?php echo BASE_URL.RP_LOCAL_STYLE_CSS;?>styles.css" /> and comment out the ones have been minified.
-
-7. You can add more CSS files for minification, just open gulpfile.js and add the file's path in gulp.src([..]).
-
-8. Do this the same for CSS files in Core, then use this link at the Core HTML head <link rel="stylesheet" media="screen" type="text/css" href="<?php echo BASE_URL.RP_CORE_STYLE_CSS;?>styles.css" />.
-
-9. To optimise all your javascript files that rely on requirejs, please read the README in core/ and in local/. If you are not using requirejs for managing your js files, then you can minify them via gulp. Just edit gulpfile.js before running $ gulp in your Command Prompt.
+4. Create an empty gulpfile.js configuration file within the project folder. e.g. wamp/www/projectA/. This gulpfile.js is used to define our tasks.
 
 OPTIMISATION (OTHER IMPORTANT NOTES)
 
