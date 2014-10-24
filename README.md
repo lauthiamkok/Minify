@@ -3,4 +3,4 @@ Minify
 
 Minify Demos
 
-These are minify tests.
+These are minify test examples for future references.
