@@ -1,8 +1,10 @@
 {
-  "name": "AngularJS + RequireJS Boilerplate",
+  "name": "Bower example",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "latest",
-    "requirejs": "latest"
+    "requirejs": "latest",
+    "jquery": "latest",
+    "backbone-amd": "latest",
+    "underscore-amd": "latest"
   }
 }
