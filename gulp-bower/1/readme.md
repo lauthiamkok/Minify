@@ -1,37 +1,70 @@
-## What is This?
+BOWER
 
-Switching to a more modular approach to writing JavaScript is unfortunately a more difficult process than we might hope. Once you understand the concept of AMD, you then have to figure out the logistics.
+References: 
+http://code.tutsplus.com/tutorials/a-requirejs-backbone-and-bower-starter-template--net-29211?post_id=10153274953588012_10153274953578012#_=_
+https://www.youtube.com/watch?v=USk1ie30z5k&list=UUd-EhXGbXSozuzsAAdPIn3A
 
-- How do you install RequireJS?
-- What about non-AMD libraries and frameworks?
-- What about dependency management?
-- What about optimization or build processes (concatenation, minification)?
-- What about configuration?
+1. Install RequireJS.
+    $ npm install requirejs
 
-This repo, along with the associated video tutorial on Nettuts+ should give you an excellent start. Also, at some point, be sure to consider Yeoman with RequireJS support.
+2. Next, we need an easy way to deal with dependency management. We'll use Bower,
+    $ npm install bower
 
-## Setup
+3. Let's now install the dependencies for this project. I'm assuming that we're building a Backbone project, so I've listed RequireJS, jQuery, Underscore, and Backbone as dependencies.
+    $ bower install
 
-First, of course, download this repo. Then, from the Terminal (assuming Node.js installed), install RequireJS.
+Note that you need a .bowerrc in your project root, which contains,
 
-    npm install requirejs
+    {
+      "directory": "app/scripts/vendor"
+    }
 
-Next, we need an easy way to deal with dependency management. We'll use Bower, from the guys at Twitter.
+Then you need a bower.json or a component.json, which contains,
 
-    npm install bower
+    {
+      "name": "RequireJS Starter",
+      "version": "1.0.0",
+      "dependencies": {
+        "requirejs": "latest",
+        "jquery": "latest",
+        "backbone-amd": "latest",
+        "underscore-amd": "latest"
+      }
+    }
 
-Let's now install the dependencies for this project. I'm assuming that we're building a Backbone project, so I've listed RequireJS, jQuery, Underscore, and Backbone as dependencies.
+Then in app/build/ you need a app.build.js, which contains,
 
-    bower install
+    ({
+      appDir: "../",
+      baseUrl: "scripts",
+      dir: "../../dist",
+      name: 'main',
+      mainConfigFile: '../scripts/main.js',
+      optimizeCss: 'standard'
+    })
 
-> Please note that we're using the AMD versions of both Backbone and Underscore to make the setup process as easy as possible.
+and a build.sh, which contains, 
 
-When ready to build the project, run:
+    r.js -o app/build/app.build.js
+    cd dist
+    mv scripts/vendor/requirejs/require.js require.js
+    rm -rf scripts/vendor/* build scripts/views scripts/models scripts/collections build.txt
+    mkdir scripts/vendor/requirejs && mv require.js scripts/vendor/requirejs/require.js
+    mv css/style.css style.css && rm -rf css/* && mv style.css css/style.css
 
-    build/build.sh
+Note that you need to use (for Windows users),
+    r.js.cmd -o app/build/app.build.js
 
-this will create a new `dist` directory, copy the files over, run the r.js optimizer on assets, and clean it the file structure a bit for production. Refer to `app.build.js`for configuration options.
+Instead of
+    r.js -o app/build/app.build.js
 
-### CSS Imports
+4. When ready to build the project, run the line below on Git Bash (note that not on Windows CMD):
+    $ app/build/build.sh 
 
-If you're not using a preprocessor, feel free to modularize your stylesheets, and `@import` them into a master stylesheet. During the build process, r.js will merge these files together, so that you don't have to deal with any performance hits from using `@import`.
+Launch Git Bash, type this line to navigate to your project,
+    cd /c/wamp/www/your/project/path/
+
+Then type the Bash Script above to build the project,
+    $ app/build/build.sh 
+
+Note that you can perform these steps of command lines in Git Bash completely.
