@@ -35,37 +35,6 @@ This will create a node_modules folder within wamp/www where Gulp and plug-in co
 
 4. Create an empty gulpfile.js configuration file within the project folder. e.g. wamp/www/projectA/. This gulpfile.js is used to define our tasks.
 
-OPTIMISATION (OTHER IMPORTANT NOTES)
-
-1. Note that you don't need to type the $ in your CMD (but you see it in Git Bash as a default in every new line). In CMD, you just have to type the command line you need, e.g. in C:\Users\YourName>. So if you type cd..\..\ as in,
-    C:\Users\YourName>cd..\..\
-
-You will be navigating to,
-    C:> (the root)
-
-Then type 
-    C:>cd wamp\www
-
-You will end up at,
-    C:\wamp\wwww\
-
-Then you can start installing Gulp, etc.
-
-2. Also, it is very important to make sure the node executable is in your User Variable PATH (if you're using Windows). Once added node to the path, you have to restart CMD (important to restart it!).
-
-In case you needed to check your PATH you can view it by right clicking the Computer in File Explorer or from the security settings in Control Panel. Once there select Advanced System Settings. A dialog will open with the Advanced tab selected. At the bottom is a button, Environment Variables. Add this line after the list,
-    ;C:\Program Files\nodejs; (note that you must add a ; before any additional stuff)
-
-3. You also need this line for Bower (you need to install Git for running Bower),
-    C:\Program Files (x86)\Git
-
-Did you install Git correctly? According to the Bower site, you need to make sure you check the option,
-    "Run Git from Windows Command Prompt".
-
-Otherwise you may have this issue where Git was not found - "git is not installed or not in the PATH". If you have this issue, re-ran the installer for Git and changed the setting and then it worked.
-
-Reference: http://stackoverflow.com/questions/19290899/git-is-not-installed-or-not-in-the-path
-
 BROWSERIFY (REQUIREJS ALTERNATIVE)
 
 1. You need to optimise the js before you can browserify's minified js on your project. 
