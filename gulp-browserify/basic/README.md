@@ -30,16 +30,7 @@ BROWSERIFY (REQUIREJS ALTERNATIVE)
         .pipe(gulp.dest('./build/scripts'));
     });
 
-    gulp.task('browserify1', function() {
-      return browserify('./src/js/main.js')
-        .bundle()
-        .pipe(source('main.js')) // gives streaming vinyl file object
-        .pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
-        .pipe(uglify()) // now gulp-uglify works 
-        .pipe(gulp.dest('./build/scripts'));
-    });
-
-    gulp.task('default', ['browserify','browserify1'], function() {
+    gulp.task('default', ['browserify'], function() {
         /*
         // watch for HTML changes
         gulp.watch('src/*.html', function() {
